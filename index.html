@@ -204,7 +204,7 @@ section{padding:50px 6%}
       <input id="fullName" placeholder="Full name" required>
       <input type="email" placeholder="Email address" required>
       <input type="password" placeholder="Password" required minlength="6">
-      <select id="accountRole">
+      <select id="accountType" required>
         <option value="student">I want to learn English</option>
         <option value="tutor">I want to teach English</option>
       </select>
@@ -258,6 +258,6 @@ function demoSubmit(event){
   event.preventDefault();
   alert('This is a design preview. Real account registration will be enabled after we connect Supabase.');
 }
-</script>
+
 </body>
 </html>
