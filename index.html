@@ -258,6 +258,15 @@ function demoSubmit(event){
   event.preventDefault();
   alert('This is a design preview. Real account registration will be enabled after we connect Supabase.');
 }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+const SUPABASE_URL = "https://vjigjmtgjtqyztpeztqi.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_cFMzjJbhAiCofCwer-Y_vA_Hvsc-VdQ";
 
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+</script>
 </body>
 </html>
