@@ -2,150 +2,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinguaNest | Learn English with Confidence</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      color: #243044;
-      background: #f8faff;
-      line-height: 1.6;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 8%;
-      background: white;
-    }
-    .logo { font-size: 25px; font-weight: bold; color: #5146a5; }
-    nav a {
-      margin-left: 22px;
-      color: #354052;
-      text-decoration: none;
-    }
-    .hero {
-      padding: 100px 8%;
-      text-align: center;
-      background: linear-gradient(135deg, #eeeaff, #e6f5ff);
-    }
-    .hero h1 {
-      font-size: 45px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: #302b68;
-    }
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 28px;
-      color: #566176;
-      font-size: 18px;
-    }
-    .button {
-      display: inline-block;
-      background: #5146a5;
-      color: white;
-      padding: 13px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section { padding: 65px 8%; text-align: center; }
-    h2 { font-size: 30px; margin-bottom: 15px; color: #302b68; }
-    .intro { max-width: 650px; margin: auto; color: #647084; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 35px;
-    }
-    .card {
-      background: white;
-      padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px #26345a12;
-    }
-    .card h3 { color: #5146a5; margin-bottom: 10px; }
-    .contact { background: #eeeaff; }
-    footer {
-      padding: 25px;
-      text-align: center;
-      background: #302b68;
-      color: white;
-    }
-    @media(max-width: 600px) {
-      header { flex-direction: column; gap: 12px; }
-      nav a { margin: 0 8px; }
-      .hero h1 { font-size: 34px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinguaNest | Find Your English Tutor</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#25243b;background:#fff}
+:root{--purple:#6254c7;--dark:#29254d;--light:#f5f3ff;--muted:#77758a}
+button,input{font:inherit}
+button{cursor:pointer}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid #eee}
+.logo{font-size:26px;font-weight:800;color:var(--purple)}
+nav{display:flex;align-items:center;gap:27px}
+nav a{text-decoration:none;color:#38364b;font-size:14px}
+.actions{display:flex;gap:10px}
+.btn{border:1px solid var(--purple);background:white;color:var(--purple);padding:12px 19px;border-radius:9px;font-weight:700}
+.btn.primary{background:var(--purple);color:white}
+.btn:hover{opacity:.85}
+.hero{padding:75px 7% 65px;background:var(--light);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px}
+.hero h1{font-size:49px;line-height:1.13;color:var(--dark);margin-bottom:20px}
+.hero h1 span{color:var(--purple)}
+.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:490px;margin-bottom:27px}
+.searchbox{background:white;padding:12px;border-radius:13px;display:flex;gap:8px;max-width:510px;box-shadow:0 8px 30px #25243b12}
+.searchbox input{border:0;outline:0;min-width:0;flex:1;padding:10px}
+.hero-art{background:#e4dfff;border-radius:30px;min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}
+.hero-art .symbol{font-size:100px}
+.hero-art h3{font-size:23px;color:var(--dark);margin-top:12px}
+section{padding:65px 7%}
+.section-heading{text-align:center;margin-bottom:32px}
+.section-heading h2{font-size:32px;color:var(--dark);margin-bottom:10px}
+.section-heading p{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{padding:25px;border:1px solid #eee;border-radius:15px}
+.step .emoji{font-size:32px}
+.step h3{margin:14px 0 8px}
+.step p{color:var(--muted);line-height:1.6;font-size:14px}
+.tutor-section{background:#faf9ff}
+.filters{display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.filters input{padding:13px;border:1px solid #ddd;border-radius:9px;max-width:300px;width:100%}
+.tutors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tutor{border:1px solid #eee;border-radius:15px;overflow:hidden;background:white}
+.photo{height:150px;background:#eae6ff;display:flex;align-items:center;justify-content:center;font-size:65px}
+.tutor-info{padding:20px}
+.tutor-info h3{margin-bottom:6px}
+.tutor-info p{color:var(--muted);font-size:14px;margin:8px 0}
+.price{font-weight:bold;color:var(--dark);margin:14px 0}
+.tutor-info button{width:100%}
+.join{background:var(--dark);color:white;text-align:center}
+.join h2{font-size:32px;margin-bottom:13px}
+.join p{color:#d8d5ef;margin-bottom:24px}
+.join .btn{margin:5px}
+.join .btn.primary{background:white;color:var(--dark);border-color:white}
+footer{padding:30px 7%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#17152c99;z-index:10;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.modal-box{background:white;padding:30px;border-radius:17px;width:100%;max-width:420px;position:relative}
+.modal-box h2{color:var(--dark);margin-bottom:10px}
+.modal-box p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.modal-box input,.modal-box select{width:100%;padding:13px;margin-bottom:12px;border:1px solid #ddd;border-radius:8px}
+.modal-box button.primary{width:100%;margin-top:5px}
+.close{position:absolute;right:18px;top:15px;border:0;background:none;font-size:25px}
+.notice{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:750px){
+header{padding:15px 5%;height:auto;flex-wrap:wrap;gap:15px}
+nav{order:3;width:100%;justify-content:center;gap:17px}
+nav a{font-size:12px}
+.actions{gap:6px}
+.actions .btn{padding:9px;font-size:12px}
+.hero{grid-template-columns:1fr;padding:55px 6%}
+.hero h1{font-size:38px}
+.hero-art{min-height:200px}
+section{padding:50px 6%}
+.steps,.tutors{grid-template-columns:1fr}
+.searchbox{flex-wrap:wrap}
+.searchbox input{width:100%;flex-basis:100%}
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">LinguaNest</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#lessons">Lessons</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <div class="hero">
-    <h1>Learn English.<br>Grow with Confidence.</h1>
-    <p>
-      A welcoming place to practice English, improve your
-      communication skills, and feel more confident every day.
-    </p>
-    <a href="#lessons" class="button">Explore Our Lessons</a>
+<header>
+  <div class="logo">LinguaNest.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tutors">Find a tutor</a>
+    <a href="#how">How it works</a>
+    <a href="#join">Teach with us</a>
+  </nav>
+  <div class="actions">
+    <button class="btn" onclick="openModal('login')">Log in</button>
+    <button class="btn primary" onclick="openModal('student')">Sign up</button>
   </div>
+</header>
 
-  <section id="about">
-    <h2>Welcome to LinguaNest!</h2>
-    <p class="intro">
-      We believe learning English should feel comfortable,
-      enjoyable, and meaningful. Whether you are a beginner
-      or improving your skills, we are here to help you grow.
-    </p>
-  </section>
+<main>
+<div class="hero" id="home">
+  <div>
+    <h1>Learn English.<br><span>On your terms.</span></h1>
+    <p>Meet your perfect English tutor. Practice speaking, build confidence, and reach your learning goals with lessons made for you.</p>
+    <div class="searchbox">
+      <input id="heroSearch" placeholder="What do you want to learn?">
+      <button class="btn primary" onclick="searchTutors()">Find a tutor</button>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div>
+      <div class="symbol">📚🌎</div>
+      <h3>Your English journey starts here.</h3>
+      <p>Learn. Practice. Grow.</p>
+    </div>
+  </div>
+</div>
 
-  <section id="lessons">
-    <h2>Explore Our Lessons</h2>
-    <p class="intro">Learn English for the things that matter to you.</p>
+<section id="how">
+  <div class="section-heading">
+    <h2>Learn English your way</h2>
+    <p>Getting started with LinguaNest is simple.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="emoji">🔎</div>
+      <h3>1. Find your tutor</h3>
+      <p>Explore tutor profiles and discover someone who matches your goals and budget.</p>
+    </div>
+    <div class="step">
+      <div class="emoji">📅</div>
+      <h3>2. Book a lesson</h3>
+      <p>Choose a lesson time that works with your schedule.</p>
+    </div>
+    <div class="step">
+      <div class="emoji">💬</div>
+      <h3>3. Start learning</h3>
+      <p>Practice English and become more confident one lesson at a time.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Beginner English</h3>
-        <p>Build your vocabulary and learn useful everyday expressions.</p>
-      </div>
-      <div class="card">
-        <h3>Conversation English</h3>
-        <p>Practice speaking and express your thoughts with confidence.</p>
-      </div>
-      <div class="card">
-        <h3>Travel English</h3>
-        <p>Learn practical English for trips, airports, hotels, and travel.</p>
-      </div>
-      <div class="card">
-        <h3>Business English</h3>
-        <p>Improve your English for professional and workplace situations.</p>
+<section class="tutor-section" id="tutors">
+  <div class="section-heading">
+    <h2>Meet our English tutors</h2>
+    <p>Discover the right tutor for your learning journey.</p>
+  </div>
+  <div class="filters">
+    <input id="tutorSearch" placeholder="Search tutors or specialties..." oninput="filterTutors()">
+  </div>
+  <div class="tutors" id="tutorList">
+    <div class="tutor" data-search="beginner conversation">
+      <div class="photo">👩🏻‍🏫</div>
+      <div class="tutor-info">
+        <h3>English Tutor</h3>
+        <p>⭐ New tutor · Beginner English</p>
+        <p>Friendly lessons to help you improve your everyday English.</p>
+        <div class="price">Sample profile</div>
+        <button class="btn primary" onclick="openModal('login')">View profile</button>
       </div>
     </div>
-  </section>
+    <div class="tutor" data-search="travel speaking">
+      <div class="photo">👨🏻‍🏫</div>
+      <div class="tutor-info">
+        <h3>English Tutor</h3>
+        <p>⭐ New tutor · Travel English</p>
+        <p>Practice useful English for trips and daily conversations.</p>
+        <div class="price">Sample profile</div>
+        <button class="btn primary" onclick="openModal('login')">View profile</button>
+      </div>
+    </div>
+    <div class="tutor" data-search="business professional">
+      <div class="photo">👩🏽‍💻</div>
+      <div class="tutor-info">
+        <h3>English Tutor</h3>
+        <p>⭐ New tutor · Business English</p>
+        <p>Build confidence communicating in professional settings.</p>
+        <div class="price">Sample profile</div>
+        <button class="btn primary" onclick="openModal('login')">View profile</button>
+      </div>
+    </div>
+  </div>
+  <p id="noResults" style="display:none;text-align:center;margin-top:20px">No matching tutors found.</p>
+  <p style="text-align:center;color:#77758a;font-size:12px;margin-top:22px">These are sample listings. Real tutor profiles will appear after tutor registration and approval.</p>
+</section>
 
-  <section id="contact" class="contact">
-    <h2>Ready to Start Learning?</h2>
-    <p class="intro">
-      Your English learning journey starts here.
-      Explore LinguaNest and discover a comfortable way to learn.
-    </p>
-  </section>
+<section class="join" id="join">
+  <h2>Share your knowledge with the world.</h2>
+  <p>Are you an English tutor? Join LinguaNest and connect with students.</p>
+  <button class="btn primary" onclick="openModal('tutor')">Become a tutor</button>
+  <button class="btn" onclick="openModal('student')">Find a tutor</button>
+</section>
+</main>
 
-  <footer>
-    <p>© 2026 LinguaNest. All rights reserved.</p>
-  </footer>
+<footer>
+  <div><strong>LinguaNest.</strong> Learn English with confidence.</div>
+  <div>© 2026 LinguaNest. All rights reserved.</div>
+</footer>
 
+<div class="modal" id="accountModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">Welcome to LinguaNest</h2>
+    <p id="modalDescription">Create your account to get started.</p>
+    <form onsubmit="demoSubmit(event)">
+      <input id="fullName" placeholder="Full name" required>
+      <input type="email" placeholder="Email address" required>
+      <input type="password" placeholder="Password" required minlength="6">
+      <select id="accountRole">
+        <option value="student">I want to learn English</option>
+        <option value="tutor">I want to teach English</option>
+      </select>
+      <button class="btn primary" type="submit">Continue</button>
+    </form>
+    <div class="notice">Demo screen only. Real account registration and secure login will be connected in the next development stage.</div>
+  </div>
+</div>
+
+<script>
+function openModal(type){
+  const modal=document.getElementById('accountModal');
+  const title=document.getElementById('modalTitle');
+  const desc=document.getElementById('modalDescription');
+  const role=document.getElementById('accountRole');
+  if(type==='login'){
+    title.textContent='Welcome back!';
+    desc.textContent='Log in to your LinguaNest account.';
+  }else if(type==='tutor'){
+    title.textContent='Become a LinguaNest tutor';
+    desc.textContent='Start your tutor application.';
+    role.value='tutor';
+  }else{
+    title.textContent='Join LinguaNest';
+    desc.textContent='Create your student account.';
+    role.value='student';
+  }
+  modal.classList.add('show');
+}
+function closeModal(){
+  document.getElementById('accountModal').classList.remove('show');
+}
+function filterTutors(){
+  const q=document.getElementById('tutorSearch').value.toLowerCase();
+  const cards=document.querySelectorAll('.tutor');
+  let count=0;
+  cards.forEach(card=>{
+    const match=card.innerText.toLowerCase().includes(q)||card.dataset.search.includes(q);
+    card.style.display=match?'block':'none';
+    if(match)count++;
+  });
+  document.getElementById('noResults').style.display=count?'none':'block';
+}
+function searchTutors(){
+  const value=document.getElementById('heroSearch').value;
+  document.getElementById('tutorSearch').value=value;
+  filterTutors();
+  document.getElementById('tutors').scrollIntoView({behavior:'smooth'});
+}
+function demoSubmit(event){
+  event.preventDefault();
+  alert('This is a design preview. Real account registration will be enabled after we connect Supabase.');
+}
+</script>
 </body>
 </html>
